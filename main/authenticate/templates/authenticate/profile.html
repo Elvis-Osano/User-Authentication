@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{%load static%} {% block content %}{% block title%}
+<title>create Profile|preCodes</title>
+
+{% endblock title%}
+
+<div class="container">
+  <form
+    action="{%url 'edit_profile'%}"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    {%csrf_token%}
+    <h2 style="text-align: center">Create Profile</h2>
+    {%if form.errors%}
+    <p>Your form has errors</p>
+    {%endif%} {{form.as_p}} {{p_form.as_p}}
+    <input class="btn hvr-bob" type="submit" value="save" />
+  </form>
+</div>
+
+{% endblock content %}

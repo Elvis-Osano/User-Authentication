@@ -1,0 +1,29 @@
+{% extends 'base.html' %}{%load static%} {% block content %}{% block title%}
+<title>Edit Profile|preCodes</title>
+
+{% endblock title%}
+
+
+
+
+  <form action="{%url 'edit_profile'%}" class="myform1" style="color: thistle;" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}<div class="dp-pic">
+  <img src="{{user.profile.dp.url}}" alt="dp">
+</div>
+    <h2 style="text-align: center">Update Information</h2>
+    {%if form.errors%}
+    <p>Your form has errors</p>
+    {%endif%} {{form.as_p}}
+    
+    <span>Change password <a style="color: whitesmoke;" href="{%url 'change_password'%}">
+      password</password>
+    </a></span>
+    <h2 style="text-align: center">details Information</h2>
+
+    <div class="" style="margin-top: 10px;">{{update.as_p}}</div>
+    
+    <input class="btn  hvr-bob " type="submit" value="save" />
+  </form>
+
+
+{% endblock content %}

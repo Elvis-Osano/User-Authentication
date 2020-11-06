@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% block title%} {% endblock title%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <!-- Hover-master -->
+    <link
+      rel="stylesheet"
+      href="{% static 'Hover-master/css/hover-min.css' %}"
+    />
+    <!--favicon-->
+    <link
+      rel="shortcut icon"
+      href="https://www.clipartmax.com/png/full/173-1736801_shave-ice-clipart.png"
+      type="image/x-icon"
+    />
+    <!--font awesome-->
+  </head>
+  <body>
+    <div class="header">
+      {% if user.is_authenticated %}
+      <div class="nav-bar">
+        <ul>
+          <li>
+            <a href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a>
+          </li>
+          <li><a href="">Blog</a></li>
+          <li><a href="">About</a></li>
+        </ul>
+      </div>
+
+      <div class="menu">
+        <div class="dp">
+          <img src="{{user.profile.dp.url}}" alt="" />
+        </div>
+        <a href="{% url 'edit_profile' %}"> Profile </a>
+
+        <a href="{% url 'logout' %}">Logout</a>
+      </div>
+
+      {%else %}
+      <div class="menu">
+        <a href="{% url 'register' %}"> Register </a>
+
+        <a href="{% url 'login' %}">Login</a>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if messages %} {% for message in messages %}
+    <div class="message">{{message}}</div>
+    {% endfor %} {% endif %} {% block content %} {% endblock content %}
+
+    <script src="{% static 'javascript/new.js'%}"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load static %}{% block title %}
+
+<title>Register With Us for free</title>
+
+{% endblock title %} {% block content %}
+<div id="wrapper">
+  <section class="content">
+    <form class="myform1" action="{%url 'register'%}" method="POST">
+      {%csrf_token%}
+      <h1>Create Account</h1>
+      {{form.as_p}}
+      <!-- <input type="email" name="email" placeholder="Enter email...">
+      <input type="password" name="password" placeholder="Enter password..."> -->
+      <div class="terms">
+        <input
+          type="checkbox"
+          name="terms"
+          id="terms"
+          class="styled_checkbox"
+        /><label for="terms"
+          >I have read and agreed to the Terms of Use and Privacy Policy</label
+        >
+      </div>
+      <input type="submit" name="create_account" value="Create Account" />
+
+      <div class="media_signup">
+        <div class="media_header">
+          <span class="line_left"></span>
+          <h3>or sign up with social media</h3>
+          <span class="line_right"></span>
+        </div>
+        <div class="social">
+          <ul>
+            <li>
+              <a href="{% url 'social:begin' 'google-oauth2' %}" class="google"
+                ><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a
+              >
+            </li>
+          </ul>
+        </div>
+        <p class="have_account">
+          Already have an account? <a href="{%url 'login'%}">Log in</a>
+        </p>
+      </div>
+    </form>
+  </section>
+</div>
+{% endblock content %}

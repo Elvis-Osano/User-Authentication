@@ -1,0 +1,38 @@
+{% extends 'base.html' %}{% load static %}{% block title %}
+
+<title>Login|PreCodes</title>
+
+{% endblock title %} {% block content %}
+<div id="wrapper">
+
+		
+  <section class="content">
+    <form class="myform1" action="{%url 'login'%}"  method="POST">
+      {%csrf_token%}
+      <h1>Get Started</h1>
+      
+      <input type="text" class="input" name="username" placeholder="Enter email...">
+      <input type="password" name="password" placeholder="Enter password..."> 
+      
+      <input type="submit" name="login" value="Log In">
+
+      <div>--Login Using--</div>
+
+      <div class="social">
+          <ul>
+            
+            <li>
+              <a href="{% url 'social:begin' 'google-oauth2' %}" class="google"
+                ><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a
+              >
+            </li>
+          </ul>
+        </div>
+        
+        <p class="have_account">I don't have an account? <a href="{% url 'register'%}">Sign Up</a></p>
+      </div>
+    </form>
+  </section>
+
+</div>
+{% endblock content %}
